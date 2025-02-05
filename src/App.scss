@@ -1,0 +1,11 @@
+$primary-color: #42b983;
+
+.App {
+  background-color: $primary-color;
+  color: white;
+  padding: 1rem;
+
+  .colorBox {
+    color: yellow;
+  }
+}
