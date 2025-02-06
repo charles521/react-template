@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom"
 
-// ReactDOM.render(
-//   <h1>Hello, {'app'}</h1>,
-//   document.getElementById('root')
-// );
+
 
 const arr = [1,2,3]
 const ulElm = <ul>{arr.map(item => <li key={item}>{item}</li>)}</ul>
@@ -29,6 +26,30 @@ function Welcome(props) {
 }
 
 // 类组件
+class MyBtn extends Component {
+  render() {
+    return <button>{this.props.name}</button>
+  }
+}
+
+class Comment extends Component {
+  render() {
+    return (
+      <div className="comment">
+        <div className="userinfo">
+          <img width={100} src={this.props.user.avatarUrl} alt="头像" />
+          <div className="username">{this.props.user.name}</div>
+        </div>
+        <div className="comment-content">
+          评论内容: {this.props.user.content}
+        </div>
+        <div className="comment-time">
+          评论时间: {this.props.user.time}
+        </div>
+      </div>
+    )
+  }
+}
 class App extends Component {
   constructor (props) {
     super(props)
@@ -37,23 +58,22 @@ class App extends Component {
       avatarUrl: 'https://avatars.githubusercontent.com/u/1022040?v=4',
       name: 'chales',
       content: '测试react组件',
-      time: new Date().toLocaleDateString()
+      time: new Date().toLocaleTimeString()
     }
   }
   render() {
     return <div>
+      <ul>{ulElm}</ul>
+      <ul>{filterGoodsElm}</ul>
+      <Welcome />
       <h1>Hello, {this.props.name}</h1>
       <MyBtn name="提交" />
       <MyBtn name="取消" />
+      <Comment user={this.user} />
     </div>
   }
 }
 
-class MyBtn extends Component {
-  render() {
-    return <button>{this.props.name}</button>
-  }
-}
 
 
 ReactDOM.render(
