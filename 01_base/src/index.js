@@ -8,6 +8,7 @@ import NoControInput from "./NoControInput";
 
 
 ReactDOM.render(
+  // <App />,
   <NoControInput />,
   // <ControInput />,
   // <Lifycycle />,
