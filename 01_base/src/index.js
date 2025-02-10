@@ -8,6 +8,7 @@ import ControInput from "./ControInput"
 
 ReactDOM.render(
   <ControInput />,
+  
   // <Lifycycle />,
   document.getElementById('root')
 )
