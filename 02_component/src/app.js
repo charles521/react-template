@@ -3,6 +3,7 @@ import logo from './logo.svg'
 import './app.css'
 import { Button } from 'antd';
 import CommentList from './components/CommentList'
+import Compond from './components/Compond'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Button type="primary">Primary Button</Button> */}
 
       <CommentList />
+      <Compond />
     </div>
   )
 }
