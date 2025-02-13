@@ -1,0 +1,22 @@
+.title {
+  text-align: center;
+}
+.login-form {
+  text-align: center;
+}
+.form-group {
+  margin-top: 10px;
+}
+.label {
+  display: inline-block;
+  min-width: 120px;
+  text-align: right;
+  margin-right: 5px;
+}
+.btn {
+  margin: 1rem;
+}
+
+.input-error {
+  border: 1px solid red;
+}
