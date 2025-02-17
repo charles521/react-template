@@ -25,15 +25,18 @@ input[type="number"] {
   line-height: 150px;
   font-size: 32px;
   font-weight: bold;
+  background-color: green;
 }
 
 .purple {
   background-color: purple;
 }
-
+.text-white {
+  color: #fff;
+}
 .text-black {
   color: black;
 }
-.text-green {
-  color: green;
+.text-orange {
+  color: orange;
 }
