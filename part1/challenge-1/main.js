@@ -31,6 +31,7 @@ function AppContent() {
           onChange={(event) => setCircleSize(event.target.value)}
         />
       </label>
+
       <label>
         Circle Rotate
         <input
