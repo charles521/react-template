@@ -61,8 +61,8 @@ function MyApp() {
 
           {city.forecast && city.forecast.length ? (
             <ul>
-              {city.forecast.map((data) => (
-                <li>
+              {city.forecast.map((data, index) => (
+                <li key={index}>
                   {data.date}
                   <span>{`${data.temperature}℃(${data.weather})`}</span>
                 </li>
