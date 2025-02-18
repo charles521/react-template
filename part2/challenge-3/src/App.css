@@ -1,0 +1,45 @@
+#root {
+  min-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+label {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+select {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+input[type="number"] {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  text-align: center;
+  color: #fff;
+  line-height: 150px;
+  font-size: 32px;
+  font-weight: bold;
+  background-color: green;
+}
+
+.purple {
+  background-color: purple;
+}
+.text-white {
+  color: #fff;
+}
+.text-black {
+  color: black;
+}
+.text-orange {
+  color: orange;
+}
