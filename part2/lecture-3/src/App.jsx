@@ -5,6 +5,9 @@ import "./App.css";
 function App() {
   const [advice, setAdvice] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [currentTime, setCurrentTime] = useState(
+    new Date().toLocaleTimeString()
+  );
 
   async function fetchAdvice() {
     setIsLoading(true);
@@ -16,12 +19,19 @@ function App() {
 
   useEffect(() => {
     fetchAdvice();
+
+    const intervalId = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
     <>
       <h1>Advice</h1>
       <div>{isLoading ? "Loading..." : advice}</div>
+      <div>{currentTime}</div>
       <button onClick={fetchAdvice}>Get Advice</button>
     </>
   );
