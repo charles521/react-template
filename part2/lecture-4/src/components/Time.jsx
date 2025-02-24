@@ -1,18 +1,6 @@
-import { useEffect, useState } from "react";
-
+import { useTime } from "../hooks/useTime";
 function Time() {
-  const [currentTime, setCurrentTime] = useState(
-    new Date().toLocaleTimeString()
-  );
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentTime(new Date().toLocaleTimeString());
-    }, 1000);
-
-    return () => clearInterval(intervalId);
-  });
-
+  const { currentTime } = useTime();
   return <div>{currentTime}</div>;
 }
 
