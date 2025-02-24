@@ -3,7 +3,6 @@ export function useTime() {
   const [currentTime, setCurrentTime] = useState(
     new Date().toLocaleTimeString()
   );
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       setCurrentTime(new Date().toLocaleTimeString());
