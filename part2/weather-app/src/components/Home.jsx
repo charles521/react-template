@@ -4,7 +4,7 @@ import Day from "./Day";
 import styles from "./Home.module.css";
 import { useCurrentWeather } from "../hooks/useCurrentWeather";
 
-function Home() {
+function Home({ setIsHome }) {
   const { cityName, temperature, weatherIcon, isLoading } = useCurrentWeather();
   return (
     <section className={styles.section}>
@@ -12,7 +12,11 @@ function Home() {
       {!isLoading && (
         <>
           <Day name={cityName} temperature={temperature} icon={weatherIcon} />
-          <Button variant="contained" size="large">
+          <Button
+            variant="contained"
+            size="large"
+            onClick={() => setIsHome(false)}
+          >
             Get Start
           </Button>
         </>
