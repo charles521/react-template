@@ -7,47 +7,15 @@ import {
   ListItemAvatar,
   ListItemText,
 } from "@mui/material";
+import CircularProgress from "@mui/material/CircularProgress";
 import Avatar from "@mui/material/Avatar";
+import { useForecastWeather } from "../hooks/useForecastWeather";
 
 // Weather forecast
 // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
 function Forecast({ setIsHome }) {
-  const weatherForecasts = [
-    {
-      id: 1,
-      weatherIcon: "https://openweathermap.org/img/wn/10n@2x.png",
-      min: "20",
-      max: "30",
-      weather: "Rain",
-      date: "2024-04-03",
-    },
-    {
-      id: 2,
-      weatherIcon: "https://openweathermap.org/img/wn/10n@2x.png",
-      min: "20",
-      max: "30",
-      weather: "Rain",
-      date: "2024-04-03",
-    },
-    {
-      id: 3,
-      weatherIcon: "https://openweathermap.org/img/wn/10n@2x.png",
-      min: "20",
-      max: "30",
-      weather: "Rain",
-      date: "2024-04-03",
-    },
-    {
-      id: 4,
-      weatherIcon: "https://openweathermap.org/img/wn/10n@2x.png",
-      min: "20",
-      max: "30",
-      weather: "Rain",
-      date: "2024-04-03",
-    },
-  ];
-
+  const { temperatureList, isLoading } = useForecastWeather();
   return (
     <>
       <Breadcrumbs aria-label="breadcrumb">
@@ -63,26 +31,36 @@ function Forecast({ setIsHome }) {
           Forecast
         </Link>
       </Breadcrumbs>
-      <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-        {weatherForecasts.map((weatherForecast) => (
-          <ListItem key={weatherForecast.id}>
-            <ListItemAvatar>
-              <Avatar>
-                <img width={48} src={weatherForecast.weatherIcon} alt="" />
-              </Avatar>
-            </ListItemAvatar>
-            <ListItemText
-              primary={weatherForecast.weather}
-              secondary={weatherForecast.date}
-            />
-            <span>
-              {Math.floor(weatherForecast.min)}&deg;/
-              {Math.ceil(weatherForecast.max)}
-              &deg;
-            </span>
-          </ListItem>
-        ))}
-      </List>
+
+      {isLoading && <CircularProgress />}
+      {!isLoading && (
+        <List
+          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+        >
+          {temperatureList.map((weatherForecast) => (
+            <ListItem key={weatherForecast.dt}>
+              <ListItemAvatar>
+                <Avatar>
+                  <img
+                    width={48}
+                    src={`https://openweathermap.org/img/wn/${weatherForecast.weather[0].icon}@2x.png`}
+                    alt=""
+                  />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary={weatherForecast.weather[0].main}
+                secondary={weatherForecast.dt_txt}
+              />
+              <span>
+                {Math.floor(weatherForecast.main.temp_min)}&deg;/
+                {Math.ceil(weatherForecast.main.temp_max)}
+                &deg;
+              </span>
+            </ListItem>
+          ))}
+        </List>
+      )}
     </>
   );
 }
