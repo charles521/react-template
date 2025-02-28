@@ -4,8 +4,9 @@ import Day from "./Day";
 import styles from "./Home.module.css";
 import { useCurrentWeather } from "../hooks/useCurrentWeather";
 
-function Home({ setIsHome }) {
-  const { cityName, temperature, weatherIcon, isLoading } = useCurrentWeather();
+function Home({ setIsHome, position }) {
+  const { cityName, temperature, weatherIcon, isLoading } =
+    useCurrentWeather(position);
   return (
     <section className={styles.section}>
       {isLoading && <CircularProgress />}

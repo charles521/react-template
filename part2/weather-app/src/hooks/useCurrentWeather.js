@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-import { useGeolocation } from "../hooks/useGEolocation";
 import { getWeatherData } from "../services/apiWeather";
 
-export function useCurrentWeather() {
-  const { getCurrentLocation } = useGeolocation();
+export function useCurrentWeather(position) {
   const [temperature, setTemperature] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [weatherIcon, setWeatherIcon] = useState("");
@@ -12,7 +10,6 @@ export function useCurrentWeather() {
   useEffect(() => {
     async function lodeData() {
       setIsLoading(true);
-      const position = await getCurrentLocation();
       const weatherData = await getWeatherData(
         position.latitude,
         position.longitude

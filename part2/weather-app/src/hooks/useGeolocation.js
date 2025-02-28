@@ -13,7 +13,7 @@ export function useGeolocation() {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-
+          console.log(position, "position");
           setIsLoading(false);
           setPosition({ latitude, longitude });
           resolve();
@@ -26,5 +26,5 @@ export function useGeolocation() {
     });
   }
 
-  return { getCurrentLocation };
+  return { getCurrentLocation, position, isLoading };
 }

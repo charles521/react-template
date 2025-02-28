@@ -14,8 +14,8 @@ import { useForecastWeather } from "../hooks/useForecastWeather";
 // Weather forecast
 // https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
 
-function Forecast({ setIsHome }) {
-  const { temperatureList, isLoading } = useForecastWeather();
+function Forecast({ setIsHome, position }) {
+  const { temperatureList, isLoading } = useForecastWeather(position);
   return (
     <>
       <Breadcrumbs aria-label="breadcrumb">
@@ -37,8 +37,8 @@ function Forecast({ setIsHome }) {
         <List
           sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
         >
-          {temperatureList.map((weatherForecast) => (
-            <ListItem key={weatherForecast.dt}>
+          {temperatureList.map((weatherForecast, idx) => (
+            <ListItem key={idx}>
               <ListItemAvatar>
                 <Avatar>
                   <img
@@ -50,7 +50,7 @@ function Forecast({ setIsHome }) {
               </ListItemAvatar>
               <ListItemText
                 primary={weatherForecast.weather[0].main}
-                secondary={weatherForecast.dt_txt}
+                secondary={weatherForecast.date}
               />
               <span>
                 {Math.floor(weatherForecast.main.temp_min)}&deg;/
