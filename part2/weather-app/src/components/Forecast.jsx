@@ -31,7 +31,6 @@ function Forecast({ setIsHome, position }) {
           Forecast
         </Link>
       </Breadcrumbs>
-
       {isLoading && <CircularProgress />}
       {!isLoading && (
         <List
