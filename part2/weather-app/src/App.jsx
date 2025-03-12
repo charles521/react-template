@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
-import CircularProgress from "@mui/material/CircularProgress";
-import Container from "./components/Container";
-import Home from "./components/Home";
-import Forecast from "./components/Forecast";
-import { useGeolocation } from "./hooks/useGEolocation";
+import { useEffect, useState } from "react";
+import { useGeolocation } from "./hooks/useGeolocation";
+import Container from "./ui/Container";
+import Loading from "./ui/Loading";
+import Forecast from "./features/forecast/Forecast";
+import Home from "./features/home/Home";
 
 function App() {
   const { getCurrentLocation, isLoading, position } = useGeolocation();
+
   const [isHome, setIsHome] = useState(true);
 
   useEffect(() => {
@@ -16,11 +17,11 @@ function App() {
   return (
     <Container>
       {isLoading ? (
-        <CircularProgress />
+        <Loading />
       ) : isHome ? (
-        <Home position={position} setIsHome={setIsHome} />
+        <Home setIsHome={setIsHome} position={position} />
       ) : (
-        <Forecast position={position} setIsHome={setIsHome} />
+        <Forecast setIsHome={setIsHome} position={position} />
       )}
     </Container>
   );
