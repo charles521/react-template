@@ -4,7 +4,6 @@ import Container from "./ui/Container";
 import Loading from "./ui/Loading";
 import Forecast from "./features/forecast/Forecast";
 import Home from "./features/home/Home";
-
 function App() {
   const { getCurrentLocation, isLoading, position } = useGeolocation();
 

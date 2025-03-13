@@ -14,7 +14,6 @@ export function useForecastWeather(position) {
     );
 
     const weatherDataList = weatherData.list;
-
     const filteredForecastList = weatherDataList
       .map((weatherData) => {
         const weather = weatherData.weather[0];
@@ -34,9 +33,7 @@ export function useForecastWeather(position) {
 
         return curDate !== weatherDate;
       });
-
     setWeatherForecastList(filteredForecastList);
-
     setIsLoading(false);
   }
 

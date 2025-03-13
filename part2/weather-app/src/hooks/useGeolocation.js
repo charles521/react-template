@@ -7,12 +7,10 @@ export function useGeolocation() {
   async function getCurrentLocation() {
     return new Promise((resolve, reject) => {
       setIsLoading(true);
-
       if (!navigator.geolocation) {
         setIsLoading(false);
         reject("Your browser does not support geolocation");
       }
-
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
